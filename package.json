@@ -1,0 +1,26 @@
+{
+  "name": "svn",
+  "version": "1.0.0",
+  "description": "svn library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlaanderson/node-svn.git"
+  },
+  "keywords": [
+    "subversion",
+    "svn"
+  ],
+  "author": "Michael Anderson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mlaanderson/node-svn/issues"
+  },
+  "homepage": "https://github.com/mlaanderson/node-svn#readme",
+  "dependencies": {
+    "sax": "^1.2.4"
+  }
+}
