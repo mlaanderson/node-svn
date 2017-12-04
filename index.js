@@ -52,9 +52,7 @@ module.exports = NodeSVN;
 if (require.main === module) {
     (async function() {
         let svn = new NodeSVN({
-            cwd: 'http://10.19.2.154:8080/boards/4381/trunk',
-            username: 'manderson',
-            password: 'kari55rene'
+            cwd: 'http://10.19.2.154:8080/boards/4381/trunk'
         });
 
         let data = await svn.cat('4381.PrjPcb');
