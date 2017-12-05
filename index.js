@@ -5,11 +5,13 @@ const xmlParse = require('./xmlparse');
 class NodeSVN {
     constructor(options) {
         this.options = options;
+        this.options.auth = this.options.username && this.options.password ?
+            `--username ${this.options.username} --password ${this.options.password}` : '';
     }
 
     query(command) {
         return new Promise((resolve, reject) => {
-            exec(`svn ${command} --xml ${this.options.cwd} --username ${this.options.username} --password ${this.options.password}`, 
+            exec(`svn ${command} --xml ${this.options.cwd} ${this.options.auth}`, 
             (error, stdout, stderr) => {
                 if (error) {
                     return reject(error);
@@ -33,7 +35,7 @@ class NodeSVN {
 
     cat(filename) {
         return new Promise((resolve, reject) => {
-            exec(`svn cat ${this.options.cwd}/${filename} --username ${this.options.username} --password ${this.options.password}`, 
+            exec(`svn cat ${this.options.cwd}/${filename} ${this.options.auth}`, 
             (error, stdout, stderr) => {
                 if (error) {
                     return reject(error);
@@ -55,7 +57,7 @@ if (require.main === module) {
             cwd: 'http://10.19.2.154:8080/boards/4381/trunk'
         });
 
-        let data = await svn.cat('4381.PrjPcb');
-        console.log(data);
+        let data = await svn.info();
+        console.log(JSON.stringify(data, null, 4));
     })();
 }
