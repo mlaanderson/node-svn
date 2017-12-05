@@ -35,8 +35,8 @@ class NodeSVN {
 
     cat(filename) {
         return new Promise((resolve, reject) => {
-            exec(`svn cat ${this.options.cwd}/${filename} ${this.options.auth}`, 
-            (error, stdout, stderr) => {
+            let cmd = filename ? `svn cat ${this.options.cwd}/${filename} ${this.options.auth}` : `svn cat ${this.options.cwd} ${this.options.auth}`;
+            exec(cmd, (error, stdout, stderr) => {
                 if (error) {
                     return reject(error);
                 }
